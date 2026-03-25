@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+requests
+pillow
+tensorflow
+google-generativeai
+firebase-admin
+reportlab
+httpx
+qrcode[pil]
+pytest
