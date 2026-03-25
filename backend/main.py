@@ -2,6 +2,7 @@ import logging
 import time
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from routers import whatsapp
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 logger = logging.getLogger(__name__)
@@ -24,6 +25,9 @@ async def log_requests(request: Request, call_next):
     duration = round((time.time() - start) * 1000, 2)
     logger.info(f"{request.method} {request.url.path} — {response.status_code} ({duration}ms)")
     return response
+
+
+app.include_router(whatsapp.router, prefix="/api/v1")
 
 
 @app.get("/health")
