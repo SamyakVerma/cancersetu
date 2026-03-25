@@ -1,4 +1,4 @@
-# CancerSetu — User Testing Session Template
+# JanArogya — User Testing Session Template
 
 > **Required for GSC Judging Criterion #3: Impact & User Validation**
 > Complete one form per testing session. Store completed forms in this folder.

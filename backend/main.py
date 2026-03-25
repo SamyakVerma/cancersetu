@@ -7,7 +7,7 @@ from routers import whatsapp
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 logger = logging.getLogger(__name__)
 
-app = FastAPI(title="CancerSetu API", version="1.0")
+app = FastAPI(title="JanArogya API", version="1.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -32,7 +32,7 @@ app.include_router(whatsapp.router, prefix="/api/v1")
 
 @app.get("/health")
 def health():
-    return {"status": "ok", "project": "CancerSetu", "version": "1.0"}
+    return {"status": "ok", "project": "JanArogya", "version": "1.0"}
 
 
 @app.get("/stats")

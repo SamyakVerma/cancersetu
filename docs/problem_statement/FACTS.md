@@ -1,4 +1,4 @@
-# CancerSetu — Problem Statement: Key Facts & Citations
+# JanArogya — Problem Statement: Key Facts & Citations
 
 ## Oral Cancer in India
 

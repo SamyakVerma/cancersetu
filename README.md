@@ -1,6 +1,6 @@
-# CancerSetu (कैंसरसेतु)
+# JanArogya (जनआरोग्य)
 
-> **सेतु = bridge** — Bridging the gap between rural India and early cancer detection.
+> **जन = people, आरोग्य = health** — Health for every person in rural India.
 
 **AI-powered early cancer screening for rural India, delivered via WhatsApp and Android.**
 
@@ -19,7 +19,7 @@
 
 ## Our Solution
 
-CancerSetu puts a cancer screening tool in the hands of ASHA workers and patients via:
+JanArogya puts a cancer screening tool in the hands of ASHA workers and patients via:
 1. **WhatsApp Bot** — send a photo, get a risk assessment in seconds (no app install needed)
 2. **Android App** — full offline-capable screening + PDF report generation
 3. **AI Model** — TFLite model for on-device oral lesion detection
@@ -45,7 +45,7 @@ CancerSetu puts a cancer screening tool in the hands of ASHA workers and patient
 ## Project Structure
 
 ```
-cancersetu/
+janarogya/
 ├── backend/          # FastAPI server + WhatsApp webhook
 ├── ml/               # Model training, data, notebooks
 │   ├── data/raw/     # ISIC + oral cancer datasets (gitignored)

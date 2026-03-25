@@ -22,10 +22,10 @@ _PHOTO_BUTTONS = [
 ]
 
 _WELCOME_TEXT = (
-    "नमस्ते! CancerSetu में आपका स्वागत है 🙏\n"
+    "नमस्ते! JanArogya में आपका स्वागत है 🙏\n"
     "मुंह या त्वचा की तस्वीर भेजें।\n"
     "---\n"
-    "Hello! Welcome to CancerSetu.\n"
+    "Hello! Welcome to JanArogya.\n"
     "Send a photo of your mouth or skin for screening."
 )
 
