@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.env.*
+venv/
+env/
+*.egg-info/
+dist/
+*.egg
+
+# Flutter
+build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+*.iml
+.packages
+pubspec.lock
+
+# ML / Data
+data/raw/
+data/processed/
+models/*.h5
+models/*.tflite
+models/*.pb
+*.pkl
+*.bin
+
+# General
+.DS_Store
+*.log
+/tmp/
+.idea/
+.vscode/
+*.swp
+*~
+Thumbs.db
+
+# Secrets / Credentials
+*.json
+!pubspec.json
+firebase-credentials.json
+google-services.json
+GoogleService-Info.plist
+service-account*.json
