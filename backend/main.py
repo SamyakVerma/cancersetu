@@ -36,12 +36,13 @@ def health():
 
 
 @app.get("/stats")
-def stats():
+async def stats():
+    from services.firebase_service import get_stats
+    live = await get_stats()
     return {
-        "total_screenings": 0,
-        "positive_detections": 0,
-        "reports_generated": 0,
-        "whatsapp_interactions": 0,
-        "states_covered": [],
-        "note": "Mock data — connect to Firestore for live stats",
+        "total_screenings": live.get("total_screenings", 0),
+        "positive_detections": live.get("positive_detections", 0),
+        "unique_patients": live.get("unique_patients", 0),
+        "reports_generated": live.get("total_screenings", 0),
+        "whatsapp_interactions": live.get("total_screenings", 0),
     }
