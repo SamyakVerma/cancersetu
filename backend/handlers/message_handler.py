@@ -5,6 +5,7 @@ from datetime import datetime
 from config.disclaimers import check_for_banned_words
 from services.gemini_service import analyze_image_with_gemini, check_image_quality
 from services.maps_service import get_maps_link
+from services.firebase_service import save_screening, upload_pdf
 from services.pdf_service import generate_report
 from services.whatsapp_service import download_media, send_buttons, send_document, send_message
 
