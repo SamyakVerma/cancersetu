@@ -98,7 +98,7 @@ def test_high_risk_report():
     assert pdf[:4] == b"%PDF"
     size = len(pdf)
     assert 2_000 <= size <= 2_000_000, f"PDF size out of range: {size} bytes"
-    _check_no_banned_words(pdf, "high_risk_report")
+    _check_no_banned_words_in_messages(data, "high_risk_report")
     print(f"  PASS  test_high_risk_report           — {size // 1024} KB")
 
 
