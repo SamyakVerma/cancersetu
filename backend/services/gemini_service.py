@@ -118,10 +118,13 @@ async def check_image_quality(image_bytes: bytes) -> dict:
         {"quality": "BAD", "reason": "<reason>"}
     Fails open (returns GOOD) on API errors so the pipeline can continue.
     """
-    image_part = {"mime_type": "image/jpeg", "data": image_bytes}
+    image_part = types.Part.from_bytes(data=image_bytes, mime_type="image/jpeg")
 
     try:
-        response = _model.generate_content([_QUALITY_PROMPT, image_part])
+        response = await _client.aio.models.generate_content(
+            model=_MODEL,
+            contents=[_QUALITY_PROMPT, image_part],
+        )
         text = response.text.strip()
 
         if text.upper().startswith("GOOD"):
