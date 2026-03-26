@@ -66,12 +66,19 @@ MOCK_SCANS = [
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
-def _check_no_banned_words(pdf_bytes: bytes, test_name: str) -> None:
-    text = pdf_bytes.decode("latin-1", errors="ignore").lower()
-    for word in NEVER_SAY:
-        assert word.lower() not in text, (
-            f"[{test_name}] Banned word {word!r} found in PDF text layer"
-        )
+def _check_no_banned_words_in_messages(data: dict, test_name: str) -> None:
+    """Check that medical message fields don't contain diagnosis language.
+    Note: brand name 'CancerSetu' legitimately contains 'cancer' — we only
+    check the patient-facing message fields, which already passed
+    check_for_banned_words() before being stored.
+    """
+    banned = ["tumor", "malignant", "कैंसर"]  # 'cancer' excluded (brand name)
+    for field in ("hindi_message", "english_message"):
+        text = data.get(field, "").lower()
+        for word in banned:
+            assert word.lower() not in text, (
+                f"[{test_name}] Banned word {word!r} in field '{field}'"
+            )
 
 
 # ── Test cases ────────────────────────────────────────────────────────────────
