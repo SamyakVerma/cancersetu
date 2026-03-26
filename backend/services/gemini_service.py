@@ -88,10 +88,13 @@ async def analyze_image_with_gemini(
         risk_level=risk_level,
         confidence=round(confidence * 100),
     )
-    image_part = {"mime_type": "image/jpeg", "data": image_bytes}
+    image_part = types.Part.from_bytes(data=image_bytes, mime_type="image/jpeg")
 
     try:
-        response = _model.generate_content([prompt, image_part])
+        response = await _client.aio.models.generate_content(
+            model=_MODEL,
+            contents=[prompt, image_part],
+        )
         result = _extract_json(response.text)
         logger.info(
             "Gemini analysis done: risk=%s action_required=%s",
