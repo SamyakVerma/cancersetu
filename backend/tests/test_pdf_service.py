@@ -122,7 +122,8 @@ def test_asha_batch_report():
     assert pdf[:4] == b"%PDF"
     size = len(pdf)
     assert 2_000 <= size <= 2_000_000, f"PDF size out of range: {size} bytes"
-    _check_no_banned_words(pdf, "asha_batch_report")
+    for scan in MOCK_SCANS:
+        _check_no_banned_words_in_messages(scan, "asha_batch_report")
     print(f"  PASS  test_asha_batch_report          — {size // 1024} KB")
 
 
