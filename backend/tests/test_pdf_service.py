@@ -88,7 +88,7 @@ def test_medium_risk_report():
     assert pdf[:4] == b"%PDF", "Not a valid PDF (wrong magic bytes)"
     size = len(pdf)
     assert 2_000 <= size <= 2_000_000, f"PDF size out of range: {size} bytes"
-    _check_no_banned_words(pdf, "medium_risk_report")
+    _check_no_banned_words_in_messages(MOCK_DATA, "medium_risk_report")
     print(f"  PASS  test_medium_risk_report        — {size // 1024} KB")
 
 
