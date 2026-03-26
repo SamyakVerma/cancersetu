@@ -131,6 +131,23 @@ async def handle_image(sender: str, image_id: str) -> None:
         )
         logger.info("PDF report sent: sender=%s size=%d bytes", sender, len(pdf_bytes))
 
+        # Save to Firestore + upload PDF to Storage
+        doc_id = await save_screening(
+            phone=sender,
+            risk_level=risk_level,
+            confidence=confidence,
+            hindi_message=analysis["hindi_message"],
+            english_message=analysis["english_message"],
+        )
+        if doc_id:
+            pdf_url = await upload_pdf(pdf_bytes, sender, doc_id)
+            if pdf_url:
+                # Update Firestore record with the storage URL
+                from services.firebase_service import _db
+                db = _db()
+                if db:
+                    db.collection("screenings").document(doc_id).update({"pdf_url": pdf_url})
+
     except Exception as exc:
         logger.error("PDF report failed for %s: %s", sender, exc)
         # Non-fatal — user already received the text result above
