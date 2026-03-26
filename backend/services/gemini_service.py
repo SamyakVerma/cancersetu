@@ -3,15 +3,16 @@ import logging
 import os
 import re
 
-import google.generativeai as genai
 from dotenv import load_dotenv
+from google import genai
+from google.genai import types
 
 load_dotenv()
 
 logger = logging.getLogger(__name__)
 
-genai.configure(api_key=os.getenv("GEMINI_API_KEY", ""))
-_model = genai.GenerativeModel("gemini-1.5-pro")
+_client = genai.Client(api_key=os.getenv("GEMINI_API_KEY", ""))
+_MODEL = "gemini-1.5-pro"
 
 _ANALYSIS_PROMPT_TEMPLATE = (
     "You are a medical AI assistant helping rural Indians screen for \n"
