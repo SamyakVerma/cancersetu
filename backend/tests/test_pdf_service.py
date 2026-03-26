@@ -8,7 +8,6 @@ import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from config.disclaimers import NEVER_SAY
 from services.pdf_service import generate_asha_batch_report, generate_report
 
 # ── Mock data ─────────────────────────────────────────────────────────────────
